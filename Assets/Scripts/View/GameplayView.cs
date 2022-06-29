@@ -18,6 +18,10 @@ namespace View {
         public Action OnGameOver;
         public Action<BaseWeapon, GameObject, ParticleCollisionEvent> OnHit;
 
+        private bool _isTouch;
+        private Vector2 _startDragFingerPos;
+        private Vector2 _startDragPlayerPos;
+
         public void Init() {
 
             _animator = GetComponent<Animator>();
@@ -41,6 +45,7 @@ namespace View {
             _player.transform.localPosition = _settings.PlayerStartPos;
             _player.ResetView();
             _animator.SetInteger("State", 0);
+            _isTouch = false;
         }
 
         internal void StartGame() {
@@ -50,14 +55,24 @@ namespace View {
 
         internal void Tick(float deltaTime) {
             if (_mainStateModel.FlowState == MainStateModel.FState.Gameplay) {
-                Vector3 transPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -_camera.transform.position.z);
 
-                _player.transform.position = _camera.ScreenToWorldPoint(transPos);
+                if (Input.GetMouseButton(0)) {
+                    Vector2 transPos = _camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -_camera.transform.localPosition.z));
+                    if (!_isTouch) {
+                        _startDragFingerPos = transPos;
+                        _startDragPlayerPos = _player.transform.localPosition;
+                    } else {
+                        _player.transform.localPosition = _startDragPlayerPos + (transPos - _startDragFingerPos);
+                    }
+                    _isTouch = true;
+                } else {
+                    _isTouch = false;
+                }
+
                 _player.Tick(deltaTime);
             } else {
-                _player.transform.position = _settings.PlayerStartPos;
+                _player.transform.localPosition = _settings.PlayerStartPos;
             }
-            
         }
 
         private void ShipCollision(Collider2D col) {
@@ -65,7 +80,7 @@ namespace View {
             OnGameOver();
         }
 
-      
+
 
     }
 }

@@ -59,9 +59,7 @@ namespace Controller {
 
             _obstacleController.Tick(distProg, deltaTime);
 
-            if (_mainStateModel.FlowState == MainStateModel.FState.Gameplay) {
-                _gameplayView.Tick(deltaTime);
-            }
+            _gameplayView.Tick(deltaTime);
 
         }
 

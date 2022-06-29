@@ -13,22 +13,12 @@ MonoBehaviour:
   m_Name: SettingsPreset
   m_EditorClassIdentifier: 
   HalfGameAreaWidth: 7.5
-  NormalAccelStr: 27
-  StrongAccelStr: 35
-  MaxHorizSpeed: 9.4
-  HardSteerMaxHorizSpeed: 15
-  WorldSpeedGame: 30
+  PlayerStartPos: {x: 0, y: 5}
+  WorldSpeedGame: 20
   GameAreaWidth: 15
-  GameAreaHeight: 31.5
   StartingWeapon: {fileID: 776212016739992295, guid: ea19b44cd681d4947b8da056d9b2d1ce, type: 3}
   SpawnDistance: 37
   EnemyDestructionDist: -20
-  NegativeDistOnStart: -50
-  Right: 275
-  Left: 276
-  SecondaryRight: 100
-  SecondaryLeft: 97
-  AllowHardSteer: 1
-  LongPressTime: 0.4
+  NegativeDistOnStart: -10
   Levels:
   - {fileID: 11400000, guid: 99b0936202d44444bafc39f68b9b4b94, type: 2}
