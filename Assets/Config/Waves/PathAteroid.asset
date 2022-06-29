@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c39886735d2f4b468762ddbd97cf0eb, type: 3}
+  m_Name: PathAteroid
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 11400000, guid: 2d567139ada9dd34bbb11fef8f053f01, type: 2}
+  MovType: 1
+  GrpType: 1
+  GroupSize: 2
+  GroupSpawnDelay: 1
+  Path:
+    PathDots:
+    - PointPos: {x: -8.927868, y: 21.319618}
+      InHandlePos: {x: 0, y: 0}
+      OutHandlePos: {x: -1.4398317, y: 1.2690716}
+    - PointPos: {x: 0.09074056, y: 25.336533}
+      InHandlePos: {x: -4.2996044, y: 26.540997}
+      OutHandlePos: {x: 2.698843, y: 25.692617}
+    - PointPos: {x: 7.397581, y: 28.568405}
+      InHandlePos: {x: 5.817561, y: 4.4799566}
+      OutHandlePos: {x: 3.612197, y: 17.472424}
+    PathDistances:
+    - 22.385235
+    - 21.876211
+    PathTime: 3
+  StaticHorizPos: 0
