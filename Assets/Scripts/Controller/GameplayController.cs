@@ -31,8 +31,6 @@ namespace Controller {
             im.Init();
 
             //add listeners
-            im.OnSteer = Steer;
-            im.OnLongPress = HardSteer;
             _ticker.Ontick = Tick;
             _gameplayView.OnHit = OnObstacleHit;
 
@@ -75,16 +73,7 @@ namespace Controller {
         }
 
 
-        private void HardSteer() {
-            if (_mainStateModel.FlowState != MainStateModel.FState.Gameplay) return;
-            if (!_settings.AllowHardSteer) return;
-            _gameplayView.HardSteer();
-        }
-
-        private void Steer(InputManager.SteerDir dir) {
-            if (_mainStateModel.FlowState != MainStateModel.FState.Gameplay) return;
-            _gameplayView.Steer(dir);
-        }
+       
 
 
         

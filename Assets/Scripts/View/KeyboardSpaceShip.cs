@@ -1,3 +1,4 @@
+#if KEYBOARD_SPACESHIP
 using Controller;
 using DG.Tweening;
 using Model;
@@ -8,7 +9,7 @@ using UnityEngine;
 
 namespace View {
 
-    public class SpaceShip : MonoBehaviour {
+    public class KeyboardSpaceShip : MonoBehaviour {
 
         [SerializeField] private float _steerRollSpeed;
         [SerializeField] private ShipCollider[] _colliders;
@@ -168,8 +169,6 @@ namespace View {
 
         }
 
-        
-
-        
     }
 }
+#endif

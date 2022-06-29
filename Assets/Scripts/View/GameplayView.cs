@@ -8,8 +8,9 @@ namespace View {
     [RequireComponent(typeof(Animator))]
     public class GameplayView : MonoBehaviour {
 
-        [SerializeField] private SpaceShip _spaceShip;
-        
+        [SerializeField] PlayerCont _player;
+        [SerializeField] Camera _camera;
+
         private SettingsConfig _settings;
         private MainStateModel _mainStateModel;
         private Animator _animator;
@@ -24,56 +25,47 @@ namespace View {
             _settings = ModelInitiator.GetSettingsConfig();
             _mainStateModel = ModelInitiator.GetMainStateModel();
 
-            _spaceShip.Init(_settings);
-            
-            _spaceShip.OnWallTouch += WallTouch;
-            _spaceShip.OnColision += ShipCollision;
+            _player.Init(_settings);
+
+            _player.OnColision += ShipCollision;
 
         }
 
-        public void AddWeapon(BaseWeapon weapon) {
-            _spaceShip.AddWeapon(weapon).OnHit += OnAnyHit;
-        }
+        public void AddWeapon(BaseWeapon weapon) => _player.AddWeapon(weapon).OnHit += OnAnyHit;
 
         private void OnAnyHit(BaseWeapon weapon, GameObject target, ParticleCollisionEvent collision) {
             OnHit(weapon, target, collision);
         }
 
         internal void ResetView() {
-            _spaceShip.ResetView();
+            _player.transform.localPosition = _settings.PlayerStartPos;
+            _player.ResetView();
             _animator.SetInteger("State", 0);
         }
 
         internal void StartGame() {
-            _spaceShip.StartGame();
+            _player.StartGame();
             _animator.SetInteger("State", 1);
         }
 
         internal void Tick(float deltaTime) {
-            _spaceShip.Tick(deltaTime);
+            if (_mainStateModel.FlowState == MainStateModel.FState.Gameplay) {
+                Vector3 transPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -_camera.transform.position.z);
+
+                _player.transform.position = _camera.ScreenToWorldPoint(transPos);
+                _player.Tick(deltaTime);
+            } else {
+                _player.transform.position = _settings.PlayerStartPos;
+            }
+            
         }
 
         private void ShipCollision(Collider2D col) {
-            _spaceShip.GameOver();
+            _player.GameOver();
             OnGameOver();
         }
 
-        internal void Steer(InputManager.SteerDir dir) {
-            if (dir == InputManager.SteerDir.None) {
-                _spaceShip.StopSteer();
-            } else {
-                _spaceShip.Steer(((dir == InputManager.SteerDir.Left)?-1:1));
-            }
-        }
-
-        internal void HardSteer() {
-            if (_mainStateModel.ShipProgress < 0) return;
-            _spaceShip.HardSteer();
-        }
-
-        private void WallTouch(bool obj) {
-            _spaceShip.StopSteer();
-        }
+      
 
     }
 }
