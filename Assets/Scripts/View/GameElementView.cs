@@ -64,6 +64,11 @@ namespace View {
                 var t = (Time.time - obj.PathStartTime) / (obj.Wave.PathTime);
                 obj.View.transform.position = CalculatePathPosition(obj.Wave.Path, t);
 
+                Vector2 lookAtPos = CalculatePathPosition(obj.Wave.Path, t + 0.01f);
+                float rot = Mathf.Atan2(obj.View.transform.position.y - lookAtPos.y, obj.View.transform.position.x - lookAtPos.x);
+
+                obj.View.transform.rotation = Quaternion.Euler(0, 0, 90 + 360f * rot / (2 * Mathf.PI));
+
                 return Time.time > obj.PathEndTime;
             }
         }
