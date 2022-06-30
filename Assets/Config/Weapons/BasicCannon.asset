@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c95c8489f95c24fb05532ba6f8d19e, type: 3}
   m_Name: BasicCannon
   m_EditorClassIdentifier: 
-  DamagePerHit: 1
+  DamagePerHit: 2

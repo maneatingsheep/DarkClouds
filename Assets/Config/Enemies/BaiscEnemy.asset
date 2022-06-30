@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 5579291779920057335, guid: e5903be2090e6a349aa3f24c830045f7, type: 3}
   Score: 0
-  BaseHP: 5
+  BaseHP: 4

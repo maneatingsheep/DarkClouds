@@ -23,11 +23,20 @@ MonoBehaviour:
     StaticHorizPos: 0
     PathTime: 0
   - Enemy: {fileID: 11400000, guid: 2d567139ada9dd34bbb11fef8f053f01, type: 2}
-    Path: {fileID: 11400000, guid: 14fcad175bfe66c4e802f4b9eff9fe73, type: 2}
-    GapToPrevious: 50
+    Path: {fileID: 11400000, guid: d0648725bc12a6f4aa5c296356b3f272, type: 2}
+    GapToPrevious: 40
     MovType: 1
     GrpType: 1
     GroupSize: 4
     GroupSpawnDelay: 0.2
     StaticHorizPos: 0
-    PathTime: 3
+    PathTime: 2
+  - Enemy: {fileID: 11400000, guid: 2d567139ada9dd34bbb11fef8f053f01, type: 2}
+    Path: {fileID: 11400000, guid: 14fcad175bfe66c4e802f4b9eff9fe73, type: 2}
+    GapToPrevious: 40
+    MovType: 1
+    GrpType: 1
+    GroupSize: 10
+    GroupSpawnDelay: 0.2
+    StaticHorizPos: 0
+    PathTime: 2
