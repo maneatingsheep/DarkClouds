@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7e1c454651e3f440bd8e4afea318076, type: 3}
-  m_Name: Asteroid1
+  m_Name: BaiscEnemy
   m_EditorClassIdentifier: 
-  Prefab: {fileID: -5744233456731946684, guid: d3b570ddf58b5504780d2be6cf5b5c8a, type: 3}
+  Prefab: {fileID: 5579291779920057335, guid: e5903be2090e6a349aa3f24c830045f7, type: 3}
   Score: 0
   BaseHP: 5

@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c39886735d2f4b468762ddbd97cf0eb, type: 3}
-  m_Name: StartLine
+  m_Name: FlyBy
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 11400000, guid: 7e37bdec8f8754f409c0b2a88d1548cf, type: 2}
-  MovType: 0
-  GrpType: 0
-  GroupSize: 0
-  GroupSpawnDelay: 0
-  PathStart: {x: 0, y: 0}
-  Path: []
-  PathEnd: {x: 0, y: 0}
-  PathTime: 0
-  StaticHorizPos: 0
+  PathDots:
+  - PointPos: {x: 8.976937, y: 26.69458}
+    InHandlePos: {x: 0, y: 0}
+    OutHandlePos: {x: 5.5640044, y: 20.303751}
+  - PointPos: {x: -10.552709, y: 10.651108}
+    InHandlePos: {x: -5.5965996, y: 19.352373}
+    OutHandlePos: {x: 0, y: 0}
+  PathDistances:
+  - 1

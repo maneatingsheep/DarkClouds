@@ -61,7 +61,7 @@ namespace View {
                 obj.View.transform.Translate(new Vector3(0, -distProg, 0), Space.World);
                 return (obj.View.transform.position.y < _settings.EnemyDestructionDist);
             } else {
-                var t = (Time.time - obj.PathStartTime) / (obj.Wave.Path.PathTime);
+                var t = (Time.time - obj.PathStartTime) / (obj.Wave.PathTime);
                 obj.View.transform.position = CalculatePathPosition(obj.Wave.Path, t);
 
                 return Time.time > obj.PathEndTime;

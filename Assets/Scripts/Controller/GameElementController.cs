@@ -43,10 +43,9 @@ namespace Controller {
 
         private void SpawnEnemyWave() {
 
-            WaveTiming wt = _settings.Levels[0].Waves[_currentWave];
-            WaveConfig wave = wt.Wave;
+            WaveConfig wave = _settings.Levels[0].Waves[_currentWave];
 
-            _lastSpawn += wt.GapToPrevious;
+            _lastSpawn += wave.GapToPrevious;
 
             int enemyCount = (wave.GrpType == WaveConfig.GroupType.Single) ? 1 : wave.GroupSize;
 
@@ -62,7 +61,7 @@ namespace Controller {
                 } else {
                     oc.SpawnDelay = wave.GroupSpawnDelay * i;
                     oc.PathStartTime = Time.time + oc.SpawnDelay;
-                    oc.PathEndTime = oc.PathStartTime + wave.Path.PathTime;
+                    oc.PathEndTime = oc.PathStartTime + wave.PathTime;
                 }
                 
 
@@ -71,7 +70,7 @@ namespace Controller {
                         oc.View = _gameElementView.SpawnEnemy(wave.Enemy, new Vector2(wave.StaticHorizPos, _settings.SpawnDistance));
                         break;
                     default:
-                        oc.View = _gameElementView.SpawnEnemy(wave.Enemy,wave.Path.PathDots[0].PointPos);
+                        oc.View = _gameElementView.SpawnEnemy(wave.Enemy, wave.Path.PathDots[0].PointPos);
                         break;
                 }
 

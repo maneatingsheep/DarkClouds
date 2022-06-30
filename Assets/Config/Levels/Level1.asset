@@ -13,13 +13,21 @@ MonoBehaviour:
   m_Name: Level1
   m_EditorClassIdentifier: 
   Waves:
-  - Wave: {fileID: 11400000, guid: bdf3ba0411ca4dd418f583cdfd13e1d9, type: 2}
+  - Enemy: {fileID: 11400000, guid: 7e37bdec8f8754f409c0b2a88d1548cf, type: 2}
+    Path: {fileID: 0}
     GapToPrevious: 0
-  - Wave: {fileID: 11400000, guid: 933bc4c48c3d51f4e9fe46f4b523d667, type: 2}
+    MovType: 0
+    GrpType: 0
+    GroupSize: 0
+    GroupSpawnDelay: 0
+    StaticHorizPos: 0
+    PathTime: 0
+  - Enemy: {fileID: 11400000, guid: 2d567139ada9dd34bbb11fef8f053f01, type: 2}
+    Path: {fileID: 11400000, guid: 14fcad175bfe66c4e802f4b9eff9fe73, type: 2}
     GapToPrevious: 50
-  - Wave: {fileID: 11400000, guid: 50f1d484abd4deb4aba4b04007c33486, type: 2}
-    GapToPrevious: 50
-  - Wave: {fileID: 11400000, guid: 933bc4c48c3d51f4e9fe46f4b523d667, type: 2}
-    GapToPrevious: 50
-  - Wave: {fileID: 11400000, guid: 933bc4c48c3d51f4e9fe46f4b523d667, type: 2}
-    GapToPrevious: 50
+    MovType: 1
+    GrpType: 1
+    GroupSize: 4
+    GroupSpawnDelay: 0.2
+    StaticHorizPos: 0
+    PathTime: 3
