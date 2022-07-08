@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3677342349710020196}
   - component: {fileID: 8269591961838120944}
-  - component: {fileID: 5579291779920057335}
   - component: {fileID: 2971968996384559670}
+  - component: {fileID: 4675702107269407018}
   m_Layer: 7
-  m_Name: BasicEnemy
+  m_Name: BasicPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,18 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5579291779920057335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4381782320947752422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66d692b0932bd7f459605a6e31265930, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!68 &2971968996384559670
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -126,3 +114,15 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &4675702107269407018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4381782320947752422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58892c1477772d8448efe7af9965ad2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

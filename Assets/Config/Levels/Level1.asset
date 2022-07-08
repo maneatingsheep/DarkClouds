@@ -16,27 +16,40 @@ MonoBehaviour:
   - Enemy: {fileID: 11400000, guid: 7e37bdec8f8754f409c0b2a88d1548cf, type: 2}
     Path: {fileID: 0}
     GapToPrevious: 0
-    MovType: 0
     GrpType: 0
     GroupSize: 0
     GroupSpawnDelay: 0
     StaticHorizPos: 0
-    PathTime: 0
-  - Enemy: {fileID: 11400000, guid: 2d567139ada9dd34bbb11fef8f053f01, type: 2}
-    Path: {fileID: 11400000, guid: d0648725bc12a6f4aa5c296356b3f272, type: 2}
+    LifeTime: 0
+  - Enemy: {fileID: 11400000, guid: 12beb81c4d76f624dae03c1ebbc282f5, type: 2}
+    Path: {fileID: 0}
     GapToPrevious: 40
-    MovType: 1
-    GrpType: 1
-    GroupSize: 4
-    GroupSpawnDelay: 0.2
-    StaticHorizPos: 0
-    PathTime: 2
-  - Enemy: {fileID: 11400000, guid: 2d567139ada9dd34bbb11fef8f053f01, type: 2}
-    Path: {fileID: 11400000, guid: 14fcad175bfe66c4e802f4b9eff9fe73, type: 2}
-    GapToPrevious: 40
-    MovType: 1
-    GrpType: 1
+    GrpType: 0
     GroupSize: 10
     GroupSpawnDelay: 0.2
     StaticHorizPos: 0
-    PathTime: 2
+    LifeTime: 5
+  - Enemy: {fileID: 11400000, guid: 12beb81c4d76f624dae03c1ebbc282f5, type: 2}
+    Path: {fileID: 0}
+    GapToPrevious: 10
+    GrpType: 0
+    GroupSize: 10
+    GroupSpawnDelay: 0.2
+    StaticHorizPos: 0
+    LifeTime: 5
+  - Enemy: {fileID: 11400000, guid: 12beb81c4d76f624dae03c1ebbc282f5, type: 2}
+    Path: {fileID: 0}
+    GapToPrevious: 10
+    GrpType: 0
+    GroupSize: 10
+    GroupSpawnDelay: 0.2
+    StaticHorizPos: 0
+    LifeTime: 5
+  - Enemy: {fileID: 11400000, guid: 12beb81c4d76f624dae03c1ebbc282f5, type: 2}
+    Path: {fileID: 0}
+    GapToPrevious: 10
+    GrpType: 0
+    GroupSize: 10
+    GroupSpawnDelay: 0.2
+    StaticHorizPos: 0
+    LifeTime: 5

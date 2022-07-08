@@ -24,6 +24,7 @@ namespace View {
         }
 
         internal void UpdateState() {
+            _DebugText.text = _mainStateModel.FlowState.ToString();
             switch (_mainStateModel.FlowState) {
                 case MainStateModel.FState.PressToPlay:
                     _animator.SetInteger("State", 0);

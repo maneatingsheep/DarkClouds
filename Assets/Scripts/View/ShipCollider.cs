@@ -11,8 +11,5 @@ namespace View {
         private void OnTriggerEnter2D(Collider2D other) {
             OnCollision(other);
         }
-
-       
-
     }
 }

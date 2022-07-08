@@ -16,20 +16,18 @@ namespace Model {
         public PathConfig Path;
         public float GapToPrevious;
 
-        public enum MovementType { Static, PathInOut, PathInLoop }
         public enum GroupType { Single, DelayedGroup }
 
-
-        //types
-        public MovementType MovType;
         public GroupType GrpType;
 
         //group params
         public int GroupSize;
         public float GroupSpawnDelay;
+
+        //static params
         public float StaticHorizPos;
 
-        public float PathTime;
+        public float LifeTime;
 
     }
 }

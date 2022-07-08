@@ -117,32 +117,26 @@ public class LevelEditor : EditorWindow {
 
         PathConfig path = wave.Path;
 
-        if (wave.Path == null || wave.MovType == WaveConfig.MovementType.Static) return;
+        if (!(wave.Enemy is IPathFollow)) return;
+        
+        int len = wave.Path.PathDots.Length;
 
+        for (int i = 0; i < path.PathDots.Length; i++) {
 
-        switch (wave.MovType) {
-            case MovementType.PathInOut:
+            path.PathDots[i].PointPos = Handles.DoPositionHandle(path.PathDots[i].PointPos, Quaternion.identity);
+            if (i > 0) {
+                path.PathDots[i].InHandlePos = Handles.DoPositionHandle(path.PathDots[i].InHandlePos, Quaternion.identity);
+            }
+            if (i < len - 1) {
+                path.PathDots[i].OutHandlePos = Handles.DoPositionHandle(path.PathDots[i].OutHandlePos, Quaternion.identity);
+                var dot2 = path.PathDots[i + 1];
 
-                int len = wave.Path.PathDots.Length;
+                Handles.DrawBezier(path.PathDots[i].PointPos, dot2.PointPos, path.PathDots[i].OutHandlePos, dot2.InHandlePos, Color.cyan, null, 2);
+            }
 
-
-                for (int i = 0; i < path.PathDots.Length; i++) {
-
-                    path.PathDots[i].PointPos = Handles.DoPositionHandle(path.PathDots[i].PointPos, Quaternion.identity);
-                    if (i > 0) {
-                        path.PathDots[i].InHandlePos = Handles.DoPositionHandle(path.PathDots[i].InHandlePos, Quaternion.identity);
-                    }
-                    if (i < len - 1) {
-                        path.PathDots[i].OutHandlePos = Handles.DoPositionHandle(path.PathDots[i].OutHandlePos, Quaternion.identity);
-                        var dot2 = path.PathDots[i + 1];
-
-                        Handles.DrawBezier(path.PathDots[i].PointPos, dot2.PointPos, path.PathDots[i].OutHandlePos, dot2.InHandlePos, Color.cyan, null, 2);
-                    }
-
-                }
-
-                break;
         }
+
+        
     }
 
     private static void DrawWaveListElement(Rect rect, int index, bool isActive, bool isFocused) {
@@ -199,12 +193,11 @@ public class LevelEditor : EditorWindow {
         }
 
 
-
-        wave.MovType = (MovementType)EditorGUILayout.EnumPopup("Position type", wave.MovType);
-        if (wave.MovType == MovementType.Static) {
+        if (wave.Enemy.Prefab is IStationary) {
             wave.StaticHorizPos = EditorGUILayout.FloatField("Horizontal Position", wave.StaticHorizPos);
-        } else {
-            wave.PathTime = EditorGUILayout.FloatField("PathtravelTime", wave.PathTime);
+        }
+        if (wave.Enemy.Prefab is IPathFollow) {
+            wave.LifeTime = EditorGUILayout.FloatField("PathtravelTime", wave.LifeTime);
 
             wave.GrpType = (GroupType)EditorGUILayout.EnumPopup("Wave type", wave.GrpType);
 

@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using View;
 
-public class PlayerCont : MonoBehaviour
+public class ShipView : MonoBehaviour
 {
     [SerializeField] private ShipCollider[] _colliders;
-    [SerializeField] private GameObject _body;
     [SerializeField] private GameObject _deathFx;
+    [SerializeField] private GameObject _body;
 
-    public Action<Collider2D> OnColision;
+    public Action<Collider2D> OnDamage;
     private SettingsConfig _settings;
 
     internal void Init(SettingsConfig settings) {
@@ -20,17 +20,15 @@ public class PlayerCont : MonoBehaviour
 
         transform.localScale = Vector3.one;
         foreach (var c in _colliders) {
-            c.OnCollision += Colision;
+            c.OnCollision += OnColision;
         }
 
         //make ship collider ignore each other
         for (int i = 0; i < _colliders.Length - 1; i++) {
             for (int j = i + 1; j < _colliders.Length; j++) {
                 Physics2D.IgnoreCollision(_colliders[i].GetComponent<Collider2D>(), _colliders[j].GetComponent<Collider2D>(), true);
-
             }
         }
-
     }
 
     internal void ResetView() {
@@ -46,15 +44,14 @@ public class PlayerCont : MonoBehaviour
         _deathFx.SetActive(true);
     }
 
-    private void Colision(Collider2D other) {
-        OnColision(other);
+    private void OnColision(Collider2D other) {
+        OnDamage(other);
     }
 
     public BaseWeapon AddWeapon(BaseWeapon weapon) {
         return Instantiate(weapon, transform);
     }
     internal void Tick(float deltaTime) {
-
 
     }
 

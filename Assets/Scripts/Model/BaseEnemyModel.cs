@@ -8,10 +8,8 @@ namespace Model {
         public BaseEnemyConfig Config;
         public bool IsSpawned = false;
 
-        public float SpawnDelay;
-
-        public float PathStartTime;
-        public float PathEndTime;
+        public float SpawnTime;
+        public float OutOfScopeTime;
 
         public WaveConfig Wave;
     }

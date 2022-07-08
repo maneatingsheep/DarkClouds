@@ -8,7 +8,7 @@ namespace Model {
 
     public class ViewInitiator : BaseIntroducer {
         [SerializeField] private UIView _uIView;
-        [SerializeField] private GameplayView _gameplayView;
+        [SerializeField] private PlayerView _playerView;
         [SerializeField] private InputManager _inputManager;
         [SerializeField] private GameElementView _obstacleView;
 
@@ -22,9 +22,8 @@ namespace Model {
         override internal void CheckDependencies() {
             bool allHere = true;
             allHere &= _uIView != null;
-            allHere &= _gameplayView != null;
+            allHere &= _playerView != null;
             allHere &= _inputManager != null;
-
 
             if (!allHere) {
                 throw new Exception("missing view refs");
@@ -36,9 +35,9 @@ namespace Model {
             return Instance._uIView;
         }
 
-        public static GameplayView GetGameplayView() {
+        public static PlayerView GetPlayerView() {
             Instance.CheckAccess();
-            return Instance._gameplayView;
+            return Instance._playerView;
         }
 
         public static InputManager GetInputManager() {
@@ -50,7 +49,5 @@ namespace Model {
             Instance.CheckAccess();
             return Instance._obstacleView;
         }
-        
-        
     }
 }

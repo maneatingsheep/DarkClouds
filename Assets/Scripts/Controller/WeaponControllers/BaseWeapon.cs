@@ -8,7 +8,7 @@ namespace Controller {
         [SerializeField] public WeaponConfig Config;
         [SerializeField] private WeaponPS[] _particles;
 
-        public Action<BaseWeapon, GameObject, ParticleCollisionEvent> OnHit;
+        public Action<BaseWeapon, GameObject, ParticleCollisionEvent> OnWeaponHit;
 
         void Awake() {
             for (int i = 0; i < _particles.Length; i++) {
@@ -17,7 +17,7 @@ namespace Controller {
         }
 
         private void OnPSHit(GameObject target, ParticleCollisionEvent collision) {
-            OnHit(this, target, collision);
+            OnWeaponHit(this, target, collision);
         }
     }
 }

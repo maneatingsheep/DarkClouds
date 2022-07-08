@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7e1c454651e3f440bd8e4afea318076, type: 3}
-  m_Name: StartLine
+  m_Name: BaiscShip
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 4010887285710474806, guid: 4bd47cfcedb09fc459fca674bf267c03, type: 3}
+  Prefab: {fileID: 4675702107269407018, guid: e5903be2090e6a349aa3f24c830045f7, type: 3}
   Score: 0
-  BaseHP: 500000
+  BaseHP: 4

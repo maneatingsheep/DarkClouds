@@ -7,10 +7,10 @@ namespace Controller {
     public class GameplayController {
         
         private MainStateModel _mainStateModel;
-        private GameplayView _gameplayView;
+        private PlayerView _playerView;
         private SettingsConfig _settings;
         private Ticker _ticker;
-        private GameElementController _obstacleController;
+        private GameElementController _gameElementController;
 
         internal void Init() {
             
@@ -20,34 +20,38 @@ namespace Controller {
             _settings = ModelInitiator.GetSettingsConfig();
             _ticker = ModelInitiator.Getticker();
 
-            _obstacleController = new GameElementController();
+            _gameElementController = new GameElementController();
 
-            _gameplayView = ViewInitiator.GetGameplayView();
+            _playerView = ViewInitiator.GetPlayerView();
 
             //init controllers
-            _obstacleController.Init();
-            _gameplayView.Init();
+            _gameElementController.Init();
+
+            _gameElementController.OnAllEnemiesDespawned += OnAllEnemiesDespawned;
+
+
+            _playerView.Init();
             var im = ViewInitiator.GetInputManager();
             im.Init();
 
             //add listeners
             _ticker.Ontick = Tick;
-            _gameplayView.OnHit = OnObstacleHit;
+            _playerView.OnWeaponHit = OnEnemyHit;
 
-            _gameplayView.AddWeapon(_settings.StartingWeapon);
+            _playerView.AddWeapon(_settings.StartingWeapon);
         }
 
         internal void UpdateState() {
             switch (_mainStateModel.FlowState) {
                 case MainStateModel.FState.GameOver: break;
                 case MainStateModel.FState.PressToPlay:
-                    _obstacleController.Reset();
-                    _gameplayView.ResetView();
+                    _gameElementController.Reset();
+                    _playerView.ResetView();
                     break;
                 case MainStateModel.FState.Gameplay:
                     _mainStateModel.ShipProgress = _settings.NegativeDistOnStart;
-                    _gameplayView.StartGame();
-                    _obstacleController.StartGame();
+                    _playerView.StartGame();
+                    _gameElementController.StartGame();
                     break;
             }
         }
@@ -57,29 +61,27 @@ namespace Controller {
 
             _mainStateModel.ShipProgress += distProg;
 
-            _obstacleController.Tick(distProg, deltaTime);
+            _gameElementController.Tick(distProg, deltaTime);
 
-            _gameplayView.Tick(deltaTime);
+            _playerView.Tick(deltaTime);
 
         }
 
-        private void OnObstacleHit(BaseWeapon weapon, GameObject target, ParticleCollisionEvent collision) {
+        private void OnEnemyHit(BaseWeapon weapon, GameObject target, ParticleCollisionEvent collision) {
 
             int damage = weapon.Config.DamagePerHit;
-
-            _obstacleController.OnEnemyHit(target, damage);
+            _gameElementController.OnEnemyHit(target, damage);
         }
 
+        private void OnAllEnemiesDespawned() {
+            OnGameOver();
+        }
 
-       
-
-
-        
 
         public Action OnGameOver {
             //expose the event to higher controller
-            get { return _gameplayView.OnGameOver; }
-            set { _gameplayView.OnGameOver = value; }
+            get { return _playerView.OnGameOver; }
+            set { _playerView.OnGameOver = value; }
         }
 
     }
